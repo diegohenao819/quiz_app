@@ -1,7 +1,7 @@
+import Navbar from "@/components/ui/navbar";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/ui/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +31,9 @@ export default function RootLayout({
         min-h-screen
         bg-gradient-to-br from-purple-700 via-blue-600 to-cyan-500`}
       >
-        <Navbar/>
+      <div className=" flex h-[90px]">
+          <Navbar />
+      </div>
         {children}
       </body>
     </html>
