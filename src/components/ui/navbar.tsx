@@ -7,33 +7,26 @@ import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (
-    <div className="w-full mt-3 flex justify-center">
-      <nav
-        className=" hidden w-[90%] sm:h-[50px] h-full z-10 justify-between items-center sm:rounded-full mx-auto mt-4 px-8
-        bg-white/10 backdrop-blur-md sm:flex flex-col sm:flex-row fixed"
-      >
-        <div className="text-center sm:text-left mb-3 sm:mb-0">logo</div>
-        <div>
-          <ul className="flex gap-6 flex-col sm:flex-row items-center">
-            <Button variant={"ghost"} asChild>
-              <Link href="/">Home</Link>
-            </Button>
-            <Button variant={"ghost"} asChild>
-              <Link href="/">Features</Link>
-            </Button>
-            <Button variant={"ghost"} asChild>
-              <Link href="/">Contact</Link>
-            </Button>
-          </ul>
+    <nav className="w-full mt-3 flex justify-center fixed z-10 bg-white/10 backdrop-blur-md">
+      <div className="w-[90%] mx-auto px-8 flex items-center justify-between sm:h-[50px] sm:rounded-full">
+        <div
+          className={`${open ? "hidden" : ""} text-center sm:text-left sm:flex`}
+        >
+          logo
         </div>
-        <Button className="mt-3 sm:mt-0">Start Quiz</Button>
-      </nav>
-
-      {/* MOBILE */}
-      <nav className="sm:hidden p-4 mx-4 w-[90%]  bg-white/10 backdrop-blur-md fixed z-10 rounded-lg">
-        <Button onClick={() => setOpen(!open)}>{open ? "X" : "☰"}</Button>
-        {open && (
-          <ul className="flex flex-col gap-4 mt-4">
+        <button
+          onClick={() => setOpen(!open)}
+          className="sm:hidden p-2 focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          {open ? "X" : "☰"}
+        </button>
+        <div
+          className={`${
+            open ? "block" : "hidden"
+          } w-full sm:flex sm:items-center sm:w-auto`}
+        >
+          <ul className="flex flex-col sm:flex-row sm:gap-6 items-center">
             <Button variant={"ghost"} asChild>
               <Link href="/">Home</Link>
             </Button>
@@ -45,8 +38,8 @@ export default function Navbar() {
             </Button>
             <Button>Start Quiz</Button>
           </ul>
-        )}
-      </nav>
-    </div>
+        </div>
+      </div>
+    </nav>
   );
 }
